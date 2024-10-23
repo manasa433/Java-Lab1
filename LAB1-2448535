@@ -1,0 +1,61 @@
+
+
+
+java.util.Scanner;
+
+public class CreditCardValidator {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        // Prompt the user for a credit card number
+        System.out.print("Enter a credit card number: ");
+        String ccNumber = scanner.nextLine();
+        
+        // Validate the credit card number
+        if (isValidCreditCardNumber(ccNumber)) {
+            System.out.println("Valid credit card number.");
+        } else {
+            System.out.println("Invalid credit card number.");
+        }
+
+        scanner.close();
+    }
+
+    public static boolean isValidCreditCardNumber(String ccNumber) {
+        // Check the length of the credit card number
+        int length = ccNumber.length();
+        return length >= 8 && length <= 9 && ccNumber.matches("\\d+");
+    }
+}
+
+2Q
+
+import java.util.Scanner;
+
+public class CreditCardValidator {
+    public static void main(String[] args) {
+        // Step 1: Create a Scanner object to read input
+        Scanner scanner = new Scanner(System.in);
+        
+        // Step 2: Prompt the user for input
+        System.out.print("Enter credit card number: ");
+        String ccNumber = scanner.nextLine();
+
+        // Step 3: Validate the length of the credit card number
+        if (ccNumber.length() < 8 || ccNumber.length() > 9) {
+            System.out.println("Invalid credit card number");
+            return; // Exit the program if invalid
+        }
+
+        // Step 4: Remove the last digit of ccNumber
+        String lastDigit = ccNumber.substring(ccNumber.length() - 1); // Get the last digit
+        String remainingDigits = ccNumber.substring(0, ccNumber.length() - 1); // Get remaining digits
+
+        // Displaying results for debugging purposes
+        System.out.println("Last digit: " + lastDigit);
+        System.out.println("Remaining digits: " + remainingDigits);
+        
+        // Close the scanner
+        scanner.close();
+    }
+}
